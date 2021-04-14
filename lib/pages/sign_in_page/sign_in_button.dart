@@ -5,7 +5,10 @@ class SignInButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Flexible(
-      child: SignButton('로그인'),
+      child: SignButton(
+        '로그인',
+        color: Colors.white,
+      ),
     );
   }
 }
