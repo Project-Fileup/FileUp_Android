@@ -8,8 +8,10 @@ class SignButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Container(
-      width: MediaQuery.of(context).size.width - 200,
+      width: size.width - 50,
+      height: size.height / 15,
       child: ElevatedButton(
         style: ButtonStyle(
           backgroundColor: MaterialStateColor.resolveWith((states) => color),

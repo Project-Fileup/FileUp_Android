@@ -5,8 +5,9 @@ class LogoWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
+      flex: 2,
       child: SvgPicture.asset(
-        "images/logo/main_logo.svg",
+        'images/logo/main_logo.svg',
         height: 150,
       ),
     );

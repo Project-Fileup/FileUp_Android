@@ -24,7 +24,7 @@ class StartPage extends StatelessWidget {
   Decoration backgroundWidget() {
     return BoxDecoration(
       image: DecorationImage(
-        image: AssetImage("images/background/start_background.png"),
+        image: AssetImage('images/background/start_background.png'),
         fit: BoxFit.cover,
       ),
     );

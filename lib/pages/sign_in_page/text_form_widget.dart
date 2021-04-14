@@ -1,20 +1,18 @@
-import 'package:file_up/ui/sign_button.dart';
+import 'package:file_up/ui/info_textField.dart';
 import 'package:flutter/material.dart';
 
-class SignWidget extends StatelessWidget {
+class TextFromWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SignButton(
-            '로그인',
-            color: Colors.white,
+          InfoTextField('이메일'),
+          SizedBox(
+            height: 10,
           ),
-          SignButton(
-            '회원가입',
-          ),
+          InfoTextField('비밀번호'),
         ],
       ),
     );
