@@ -1,8 +1,6 @@
 import 'package:file_up/pages/sign_in_page/sign_in_button.dart';
 import 'package:file_up/pages/sign_in_page/text_form_widget.dart';
-import 'package:file_up/ui/info_textField.dart';
-import 'package:file_up/ui/logo_widget.dart';
-import 'package:file_up/ui/sign_button.dart';
+import 'package:file_up/widgets/logo_widget.dart';
 import 'package:flutter/material.dart';
 
 class SignInPage extends StatelessWidget {

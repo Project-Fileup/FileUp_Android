@@ -1,4 +1,4 @@
-import 'package:file_up/ui/info_textField.dart';
+import 'package:file_up/widgets/info_textField.dart';
 import 'package:flutter/material.dart';
 
 class TextFromWidget extends StatelessWidget {

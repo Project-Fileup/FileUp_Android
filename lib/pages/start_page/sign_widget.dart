@@ -1,4 +1,4 @@
-import 'package:file_up/ui/sign_button.dart';
+import 'package:file_up/widgets/sign_button.dart';
 import 'package:flutter/material.dart';
 
 class SignWidget extends StatelessWidget {

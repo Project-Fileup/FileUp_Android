@@ -16,7 +16,7 @@ class InfoTextField extends StatelessWidget {
             borderRadius: BorderRadius.circular(30),
           ),
           fillColor: Colors.white,
-          filled: true,
+          filled: false,
           isDense: true,
         ),
       ),

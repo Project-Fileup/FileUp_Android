@@ -1,6 +1,6 @@
 import 'package:file_up/pages/start_page/sign_widget.dart';
-import 'package:file_up/ui/logo_widget.dart';
-import 'package:file_up/ui/sign_button.dart';
+import 'package:file_up/widgets/logo_widget.dart';
+import 'package:file_up/widgets/sign_button.dart';
 import 'package:flutter/material.dart';
 
 class StartPage extends StatelessWidget {
