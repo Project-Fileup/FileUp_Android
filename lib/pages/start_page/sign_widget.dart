@@ -11,9 +11,11 @@ class SignWidget extends StatelessWidget {
           SignButton(
             '로그인',
             color: Colors.white,
+            onPressed: () {},
           ),
           SignButton(
             '회원가입',
+            onPressed: () {},
           ),
         ],
       ),

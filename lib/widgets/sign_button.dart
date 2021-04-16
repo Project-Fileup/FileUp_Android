@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 class SignButton extends StatelessWidget {
   String text;
   Color color;
+  VoidCallback onPressed;
 
-  SignButton(this.text, {this.color = Colors.blue});
+  SignButton(this.text, {this.color = Colors.blue, @required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,7 @@ class SignButton extends StatelessWidget {
             ),
           ),
         ),
-        onPressed: () {},
+        onPressed: onPressed,
         child: Text(
           text,
           style: TextStyle(

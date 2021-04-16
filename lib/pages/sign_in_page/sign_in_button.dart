@@ -8,6 +8,7 @@ class SignInButton extends StatelessWidget {
       child: SignButton(
         '로그인',
         color: Colors.white,
+        onPressed: () {},
       ),
     );
   }

@@ -4,12 +4,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 class LogoWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      flex: 2,
-      child: SvgPicture.asset(
-        'images/logo/main_logo.svg',
-        height: 150,
-      ),
+    return SvgPicture.asset(
+      'images/logo/main_logo.svg',
+      height: 150,
     );
   }
 }
