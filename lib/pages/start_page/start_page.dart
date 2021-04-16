@@ -1,6 +1,5 @@
 import 'package:file_up/pages/start_page/sign_widget.dart';
 import 'package:file_up/widgets/logo_widget.dart';
-import 'package:file_up/widgets/sign_button.dart';
 import 'package:flutter/material.dart';
 
 class StartPage extends StatelessWidget {
@@ -12,8 +11,13 @@ class StartPage extends StatelessWidget {
         height: double.infinity,
         child: Column(
           children: [
-            LogoWidget(),
-            SignWidget(),
+            Expanded(
+              flex: 2,
+              child: LogoWidget(),
+            ),
+            Expanded(
+              child: SignWidget(),
+            ),
           ],
         ),
         decoration: backgroundWidget(),

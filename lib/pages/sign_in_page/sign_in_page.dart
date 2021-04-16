@@ -7,12 +7,16 @@ class SignInPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
         height: double.infinity,
         width: double.infinity,
         child: Column(
           children: [
-            LogoWidget(),
+            Expanded(
+              child: LogoWidget(),
+              flex: 2,
+            ),
             TextFromWidget(),
             SignInButton(),
           ],
