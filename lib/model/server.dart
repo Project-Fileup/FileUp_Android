@@ -1,19 +1,33 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:file_up/model/base_url.dart';
 
-void signIn(String email, String password) async {
+Dio dio = Dio(
+  BaseOptions(
+    baseUrl: base_url,
+    connectTimeout: 30 * 1000,
+    receiveTimeout: 30 * 1000,
+  ),
+);
+
+postSignIn(String email, String password) async {
   print('singIN');
-  String url = base_url + '/users/signIn';
+  String url = '/users/signIn';
 
-  print(url);
+  print('$url - email : $email, password : $password');
 
-  Response response = await Dio().post(
-    url,
-    data: {
-      'email': email,
-      'password': password,
-    },
-  );
+  try {
+    Response response = await dio.post(
+      url,
+      data: {
+        'email': email,
+        'password': password,
+      },
+    );
 
-  print(response.data);
+    return response.data;
+  } on DioError catch (e) {
+    return e.response.data;
+  }
 }

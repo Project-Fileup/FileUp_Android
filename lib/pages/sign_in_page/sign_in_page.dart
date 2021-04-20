@@ -6,22 +6,28 @@ import 'package:flutter/material.dart';
 class SignInPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    double height = size.height;
+
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: Container(
-        height: double.infinity,
-        width: double.infinity,
-        child: Column(
-          children: [
-            Expanded(
-              child: LogoWidget(),
-              flex: 2,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Container(
+            height: height - MediaQuery.of(context).padding.top,
+            width: size.width,
+            child: Column(
+              children: [
+                Expanded(
+                  child: LogoWidget(),
+                  flex: 2,
+                ),
+                TextFromWidget(),
+                SignInButton(),
+              ],
             ),
-            TextFromWidget(),
-            SignInButton(),
-          ],
+            decoration: backgroundWidget(),
+          ),
         ),
-        decoration: backgroundWidget(),
       ),
     );
   }
