@@ -1,10 +1,11 @@
-import 'dart:math';
+import 'dart:convert';
 
 import 'package:file_up/model/server.dart';
 import 'package:file_up/pages/sign_in_page/text_form_widget.dart';
 import 'package:file_up/widgets/sign_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:crypto/crypto.dart';
 
 class SignInButton extends StatelessWidget {
   @override
@@ -22,9 +23,11 @@ class SignInButton extends StatelessWidget {
     if (formKey.currentState.validate()) {
       formKey.currentState.save();
 
+      Digest sha512Pasword = sha512.convert(utf8.encode(password));
+
       circularProgress(context);
 
-      var result = await postSignIn(email, password);
+      var result = await postSignIn(email, sha512Pasword.toString());
 
       Get.back();
 
