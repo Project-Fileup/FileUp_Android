@@ -1,22 +1,17 @@
-import 'dart:convert';
-
-import 'package:file_up/model/server.dart';
 import 'package:file_up/pages/sign_up_page/base_container.dart';
-import 'package:file_up/pages/sign_up_page/email_nickName_widget.dart';
+import 'package:file_up/pages/sign_up_page/input_widget_list.dart';
 import 'package:file_up/pages/sign_up_page/vertify_widget.dart';
 import 'package:file_up/widgets/info_textField.dart';
 import 'package:file_up/widgets/sign_button.dart';
 import 'package:flutter/material.dart';
-import 'package:crypto/crypto.dart';
+import 'package:file_up/model/server.dart';
 import 'package:get/get.dart';
 
 final formKey = GlobalKey<FormState>();
-String password;
-String rePassword;
-TextEditingController passwordController = TextEditingController();
-TextEditingController rePasswordController = TextEditingController();
+String email;
+String nickName;
 
-class PasswordWidget extends StatelessWidget {
+class EmailNickNameWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -24,41 +19,35 @@ class PasswordWidget extends StatelessWidget {
       child: BaseContainer(
         children: [
           InfoTextField(
-            '비밀번호',
-            textEditingController: passwordController,
+            '이메일',
+            onSaved: (newValue) => email = newValue,
             validator: (value) {
               if (value.isEmpty) {
-                return '비밀번호 입력해주세요.';
-              } else if (!(10 <= value.length && value.length <= 25)) {
-                return '비밀번호는 10 ~ 25 자리 내로 입력해주세요.';
+                return '이메일을 입력해주세요.';
               } else {
                 return null;
               }
             },
-            onSaved: (newValue) => password = newValue,
-            obscureText: true,
+            initText: email,
           ),
           SizedBox(
             height: 20,
           ),
           InfoTextField(
-            '비밀번호 확인',
-            textEditingController: rePasswordController,
+            '닉네임',
+            onSaved: (newValue) => nickName = newValue,
             validator: (value) {
               if (value.isEmpty) {
-                return '비밀번호 입력해주세요.';
-              } else if (passwordController.text != value) {
-                return '비밀번호가 일치하지 않습니다.';
+                return '닉네임을 입력해주세요.';
               } else {
                 return null;
               }
             },
-            onSaved: (newValue) => rePassword = newValue,
-            obscureText: true,
+            initText: nickName,
           ),
           Expanded(child: Container()),
           SignButton(
-            '완료',
+            '다음',
             onPressed: () => _onPressed(context),
           ),
         ],
@@ -68,12 +57,13 @@ class PasswordWidget extends StatelessWidget {
 
   _onPressed(context) async {
     if (_textFieldValidate()) {
-      Digest sha512Password = sha512.convert(utf8.encode(password));
-
-      var result = await _signUP(context, sha512Password.toString());
-
+      var result = await _sendEmail(context);
       if (result['status'] == 200) {
-        Get.back();
+        vertify = '';
+        pageController.nextPage(
+          duration: Duration(milliseconds: 500),
+          curve: Curves.easeIn,
+        );
       } else {
         showDialog(
           context: context,
@@ -83,10 +73,10 @@ class PasswordWidget extends StatelessWidget {
     }
   }
 
-  _signUP(context, sha512Password) async {
+  _sendEmail(context) async {
     _circularProgress(context);
-    print(vertify);
-    var result = await postSignUp(email, sha512Password, vertify, nickName);
+
+    var result = await postSendEmail(email);
 
     Get.back();
 
@@ -97,9 +87,9 @@ class PasswordWidget extends StatelessWidget {
     if (formKey.currentState.validate()) {
       formKey.currentState.save();
       return true;
-    } else {
-      return false;
     }
+
+    return false;
   }
 
   void _circularProgress(context) {

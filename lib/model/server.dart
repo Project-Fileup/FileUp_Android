@@ -1,7 +1,6 @@
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:file_up/model/base_url.dart';
+import 'package:file_up/pages/sign_up_page/vertify_widget.dart';
 
 Dio dio = Dio(
   BaseOptions(
@@ -12,10 +11,7 @@ Dio dio = Dio(
 );
 
 postSignIn(String email, String password) async {
-  print('singIN');
   String url = '/users/signIn';
-
-  print('$url - email : $email, password : $password');
 
   try {
     Response response = await dio.post(
@@ -23,6 +19,44 @@ postSignIn(String email, String password) async {
       data: {
         'email': email,
         'password': password,
+      },
+    );
+
+    return response.data;
+  } on DioError catch (e) {
+    return e.response.data;
+  }
+}
+
+postSendEmail(String email) async {
+  String url = '/users/sendEmail';
+
+  try {
+    Response response = await dio.post(
+      url,
+      data: {
+        'email': email,
+      },
+    );
+
+    return response.data;
+  } on DioError catch (e) {
+    return e.response.data;
+  }
+}
+
+postSignUp(
+    String email, String password, String certifyCode, String nickName) async {
+  String url = '/users/signUp';
+
+  try {
+    Response response = await dio.post(
+      url,
+      data: {
+        'email': email,
+        'password': password,
+        'certifyCode': certifyCode,
+        'nickname': nickName,
       },
     );
 

@@ -18,7 +18,6 @@ class TextFromWidget extends StatelessWidget {
           children: [
             InfoTextField(
               '이메일',
-              textFieldValue: email,
               validator: (value) {
                 if (value.isEmpty) {
                   return '이메일을 입력해주세요';
@@ -33,7 +32,6 @@ class TextFromWidget extends StatelessWidget {
             ),
             InfoTextField(
               '비밀번호',
-              textFieldValue: password,
               obscureText: visible,
               validator: (value) {
                 if (value.isEmpty) {

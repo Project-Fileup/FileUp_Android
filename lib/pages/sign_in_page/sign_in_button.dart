@@ -30,6 +30,7 @@ class SignInButton extends StatelessWidget {
 
       int statusCode = result['status'];
       if (statusCode == 200) {
+        print("로그인 성공");
       } else {
         showDialog(
           context: context,

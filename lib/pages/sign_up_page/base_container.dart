@@ -10,7 +10,6 @@ class BaseContainer extends StatelessWidget {
     return Container(
       margin: EdgeInsets.all(20),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
         children: children,
       ),
     );

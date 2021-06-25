@@ -5,24 +5,30 @@ import 'package:flutter/material.dart';
 class SignUpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    double heigth = size.height - MediaQuery.of(context).padding.top;
+
     return Scaffold(
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        child: Column(
-          children: [
-            Expanded(
-              flex: 2,
-              child: LogoWidget(),
-            ),
-            Expanded(
-              child: InputWidgetList(),
-            )
-          ],
-        ),
-        decoration: backgroundWidget(),
-      ),
       resizeToAvoidBottomInset: false,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Container(
+            width: double.infinity,
+            height: heigth,
+            child: Column(
+              children: [
+                Expanded(
+                  child: LogoWidget(),
+                ),
+                Expanded(
+                  child: InputWidgetList(),
+                )
+              ],
+            ),
+            decoration: backgroundWidget(),
+          ),
+        ),
+      ),
     );
   }
 
